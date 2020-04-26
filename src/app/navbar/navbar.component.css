@@ -1,0 +1,24 @@
+ul {
+  list-style-type: none;
+  height: 40px;
+  display: flex;
+  background-color: #ddd;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  padding: 10.6px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+ul li a.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,17 @@
+.grid-table {
+    width: 1000px;
+}
+
+.grid-table .thead, .grid-table .tbody form .td, .grid-table .tbody form {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-around;
+}
+
+.grid-table .thead .td {
+    text-align: center !important;
+    padding: 10px;
+    background: #ccc;
+    width: 100%;
+    margin-bottom: 10px;
+}

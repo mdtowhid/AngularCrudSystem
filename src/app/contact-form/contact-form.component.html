@@ -1,0 +1,28 @@
+<a routerLink="/all-imports">All Imports</a>
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <br />
+    <input
+      ngModel
+      pattern="banana"
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      id="firstName"
+      type="text"
+      class="form-control"
+    />
+  </div>
+
+  <div *ngIf="firstName.touched && !firstName.valid">
+    <div *ngIf="firstName.errors.pattern">Pattern doesn't matched.</div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <br />
+    <textarea id="comment" cols="60" rows="10" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-outline-warning">Save</button>
+</form>

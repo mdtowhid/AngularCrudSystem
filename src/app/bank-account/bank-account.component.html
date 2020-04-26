@@ -1,0 +1,82 @@
+<blockquote class="blockquote ml-5">
+  <h2>My Bank Accounts</h2>
+  <footer class="blockquote-footer">
+    Using Angular
+  </footer>
+</blockquote>
+
+<div class="grid-table">
+  <div class="thead">
+    <div class="td">Account No.</div>
+    <div class="td">Account Holder</div>
+    <div class="td">Bank</div>
+    <div class="td">IFSC</div>
+    <div class="td">
+      <button class="btn btn-outline-success" (click)="addBankAccountForm()">
+        + New Account
+      </button>
+    </div>
+    <div class="td">
+      <span
+        *ngIf="notification"
+        class="elementToFadeInAndOut"
+        [ngClass]="notification.class"
+      >
+        {{ notification.msg }}
+      </span>
+    </div>
+  </div>
+  <div class="tbody ml-5">
+    <form
+      class="tr"
+      [formGroup]="fg"
+      *ngFor="let fg of bankAccountForms.controls; let i = index"
+      (submit)="recordSubmit(fg)"
+    >
+      <div class="td">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="accountNumber"
+        />
+      </div>
+      <div class="td">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="accountHolder"
+        />
+      </div>
+      <div class="td">
+        <select class="form-control" formControlName="bankId">
+          <option value="0">Select</option>
+          <option *ngFor="let item of bankList" value="{{ item.bankId }}">
+            {{ item.bankName }}
+          </option>
+        </select>
+      </div>
+      <div class="td">
+        <input type="text" class="form-control" formControlName="IFSC" />
+      </div>
+      <div class="td">
+        <input
+          type="submit"
+          class="btn"
+          [ngClass]="
+            fg.get('bankAccountId').value == 0
+              ? 'btn-success'
+              : 'btn-outline-dark'
+          "
+          [disabled]="fg.invalid"
+          value="{{ fg.get('bankAccountId').value == 0 ? 'Submit' : 'Update' }}"
+        />
+        <button
+          class="btn btn-light ml-1"
+          (click)="deleteRecord(fg.get('bankAccountId').value, i)"
+        >
+          Delete
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
